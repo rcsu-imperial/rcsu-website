@@ -1,0 +1,310 @@
+/* Based on https://codepen.io/tutsplus/pen/MWedpoj
+ * https://webdesign.tutsplus.com/tutorials/css-charts-how-to-create-an-organizational-chart--cms-36163
+ */
+
+/* RESET STYLES & HELPER CLASSES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+    --level-1: #8dccad;
+    --level-2: #f5cc7f;
+    --level-3: #7b9fe0;
+    --level-4: #f27c8d;
+    --connecting-line-color: black;
+    --connecting-line-vertical-width: 2px;
+    --connecting-line-vertical-height: 20px;
+    --connecting-line-horizontal-width: var(--connecting-line-vertical-height);
+    --connecting-line-horizontal-height: var(--connecting-line-vertical-width);
+    --level-spacing: 20px;
+    --max-level-content-width: 220px;
+    --max-level-content-height: 150px;
+}
+
+/* Debugging tools */
+/*
+.top-level { background: var(--level-1); }
+.level-2 { background: var(--level-2); }
+.level-3 { background: var(--level-3); }
+.level-4 { background: var(--level-4); }
+*/
+
+.org-chart-container {
+    max-width: 1300px;
+    padding: 0 10px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.org-chart-container *, .org-chart-container *:before, .org-chart-container *:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.org-chart-container ol {
+    list-style: none;
+    overflow: visible;
+}
+
+/* Convention: ::before for vertical lines and ::after for horizontal lines */
+
+/* Mobile first approach */
+.level-wrapper {
+    position: relative;  /* needed to correctly place ::before and ::after elements */
+    /* Put level slightly to the right */
+    /*width: 95%; */
+    margin-left: 5%;
+    margin-top: var(--level-spacing);
+    padding: 0;
+}
+
+/* Optional level wrapper all encompassing vertical bar and horizontal bar below */
+/* For generality remove the sibling combinator `.top-level ~ ` */
+/* Vertical bar connecting from top-level element */
+.top-level ~ .level-wrapper:first-of-type::before
+{
+    content: "";
+    position: absolute;
+    top: calc(-1 * var(--level-spacing)); /* correct for element spacing */;
+    bottom: 0;
+    /* move element to the left the same amount as the horizontal width of the attaching bar */
+    left: calc(-1 * var(--connecting-line-horizontal-width));
+    width: var(--connecting-line-vertical-width);
+    background: var(--connecting-line-color);
+}
+
+/* Horizontal bar below everything which connects to the vertical bar from level-1 */
+.top-level ~ .level-wrapper:first-of-type::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    /* move element to the left the same amount as the horizontal width of the attaching bar */
+    left: calc(-1 * var(--connecting-line-horizontal-width));
+    right: 0;
+    height: var(--connecting-line-horizontal-height);
+    background: var(--connecting-line-color);
+}
+
+/* Style levels */
+.level-wrapper li + li {
+    margin-top: var(--level-spacing); /* space elements */
+}
+
+.level-wrapper li {
+    position: relative; /* needed to correctly place ::before and ::after elements */
+    padding-bottom: var(--level-spacing); /* use padding instead of margin to get bar to extend */
+}
+.level-wrapper li::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: calc(-1 * var(--level-spacing)); /* correct for element spacing */;
+    bottom: calc(-1 * var(--level-spacing)); /* correct for element spacing */
+    /* move element to the left the same amount as the horizontal width of the attaching bar */
+    left: calc(-1 * var(--connecting-line-horizontal-width));
+    width: var(--connecting-line-vertical-width);
+    background: var(--connecting-line-color);
+}
+.level-wrapper li:last-child::before {
+    display: none;
+}
+
+.top-level,
+.level {
+    position: relative;
+    /* Optional max-width to restrain content */
+    max-width: var(--max-level-content-width);
+}
+
+.level * {
+    /*max-width: 300px;*/
+}
+
+/* Horizontal bars connecting vertical bar to level block */
+.level::after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 50%; /* center vertically */
+    left: 0;
+    transform: translateX(-100%); /* Move horizontal bar outside the box */
+    width: var(--connecting-line-horizontal-width);
+    height: var(--connecting-line-horizontal-height);
+    background: var(--connecting-line-color);
+}
+
+/* Vertical bars connecting to different level blocks together */
+.level::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 50%; /* only go to the middle of the element to get an 'L' shaped bar */
+    /* move element to the left the same amount as the horizontal width of the attaching bar */
+    left: calc(-1 * var(--connecting-line-horizontal-width));
+    width: var(--connecting-line-vertical-width);
+    background: var(--connecting-line-color);
+}
+
+/* Level images */
+.top-level figure,
+.level figure {
+    border: thin #222 solid;
+    border-bottom: none;
+    display: flex;
+    flex-flow: column;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.top-level img,
+.level img {
+    margin: auto;
+}
+
+.top-level figcaption,
+.level figcaption {
+    color: #fff;
+    background-color: #222;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+}
+
+.top-level p,
+.level p {
+    margin-top: 0;
+    padding: 0.1em;
+    text-align: center;
+    border: #222 1px solid;
+}
+
+/* MQ STYLES for desktop
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (min-width: 900px) {
+    .rectangle {
+        padding: 20px;
+    }
+
+    .level-wrapper {
+        position: relative;
+        display: grid;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .top-level figure,
+    .level figure {
+        margin: auto;
+    }
+
+    /* Remove mobile branching from the left side on desktop and make it top down */
+    .level-wrapper::after,
+    .top-level ~ .level-wrapper:first-of-type::before,
+    .top-level ~ .level-wrapper:first-of-type::after,
+    .top-level::after,
+    .level-2::before,
+    .level-2::after,
+    .level-3::before,
+    .level-3::after
+    {
+        display: none;
+    }
+    .level-wrapper li + li {
+        margin-top: 0; /* Remove: space elements */
+    }
+
+    /* LEVEL-1 STYLES –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .top-level {
+        margin: 0 auto 40px;
+    }
+
+    /* Vertical bar below top level */
+    .top-level::before {
+        content: "";
+        position: absolute;
+        top: 100%; /* Push below the block */
+        left: 50%; /* Align to center */
+        transform: translateX(50%) /* align to center */;
+        width: var(--connecting-line-vertical-width);
+        height: var(--connecting-line-vertical-height);
+        background: var(--connecting-line-color);
+    }
+
+
+    /* LEVEL-2 STYLES
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .level-2-wrapper {
+        display: grid;
+        /* Number of people below level 1 */
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    /* Vertical bar above level 2 and 3 block */
+    /* display last block */
+    .level-2-wrapper > li:last-child::before,
+    .level-3-wrapper > li:last-child::before
+    {
+        display: block;
+    }
+    .level-2-wrapper > li::before,
+    .level-3-wrapper > li::before
+    {
+        bottom: 100%; /* Push above the block */
+        left: 50%; /* Align to center */
+        transform: translateX(50%) /* align to center */;
+    }
+
+    .level-2 {
+        width: 100%;
+        position: relative;
+        margin: 0 auto 40px;
+    }
+
+    /* Vertical bar below level 2 */
+    .level-2::before {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 100%; /* Push below the block */
+        left: 50%; /* Align to center */
+        transform: translateX(50%) /* align to center */;
+        width: var(--connecting-line-vertical-width);
+        height: var(--connecting-line-vertical-height);
+        background: var(--connecting-line-color);
+    }
+
+    /* LEVEL-3 STYLES
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .level-3-wrapper {
+        position: relative;
+        display: grid;
+        /* Number of people below level 2 */
+        grid-template-columns: repeat(5, 1fr);
+        grid-column-gap: var(--level-spacing);
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Horizontal bar above level 3 */
+    .level-3-wrapper::before {
+        content: "";
+        position: absolute;
+        top: calc(-1 * var(--level-spacing));
+        left: calc(10% - 5px); /* center considering the size */
+        width: calc(80% + 16px); /* length of the bar to span the block */
+        height: var(--connecting-line-horizontal-height);
+        background: var(--connecting-line-color);
+    }
+
+    .level-3 {
+        margin-bottom: var(--level-spacing);
+    }
+
+
+    /* LEVEL-4 STYLES
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+    .level-4-wrapper {
+        /* Shift to the right */
+        width: 80%;
+        margin-left: 20%;
+    }
+}

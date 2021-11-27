@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!-- <!DOCTYPE committee SYSTEM "./committee.dtd"> -->
+<committee year="21-22">
+ <person role="president">
+  <display-role>President</display-role>
+  <name>Aparna Pillai</name>
+  </person>
+ <person role="secretary">
+  <display-role>Secretary</display-role>
+  <name>Tharanyaa Balasundaram</name>
+  </person>
+ <person role="treasurer">
+  <display-role>Treasurer</display-role>
+  <name>Susan Rutter</name>
+  <subcommittee>
+   <person role="biosoc-president">
+    <display-role>BioSoc President</display-role>
+    <name>Milun Nair</name>
+    </person>
+   <person role="biochemsoc-president">
+    <display-role>BiochemSoc President</display-role>
+    <name>Kathleen Gunardi</name>
+    </person>
+   <person role="chemsoc-president">
+    <display-role>ChemSoc President</display-role>
+    <name>Ben Moss</name>
+    </person>
+   <person role="mathsoc-president">
+    <display-role>MathSoc President</display-role>
+    <name>Amir Rahman</name>
+    </person>
+   <person role="physoc-president">
+    <display-role>PhySoc President</display-role>
+    <name>Jacob Edginton</name>
+    </person>
+  </subcommittee>
+ </person>
+ <person role="vice-president-activities">
+  <display-role>Vice President (Activities)</display-role>
+  <name>Priantha Pretheshan</name>
+  <subcommittee>
+   <person role="events-officer">
+    <display-role>Events Officer</display-role>
+    <name>Yong Lee</name>
+    </person>
+   <person role="publicity-officer">
+    <display-role>Publicity Officer</display-role>
+    <name>Walter Shen</name>
+    </person>
+   <person role="rag-officer">
+    <display-role>RAG Officer</display-role>
+    <name>Mingxin Shen</name>
+    </person>
+   <person role="sports-officer">
+    <display-role>Sports Officer</display-role>
+    <name>Chinny Lee</name>
+    </person>
+  </subcommittee>
+ </person>
+ <person role="vice-president-education">
+  <display-role>Vice President (Education)</display-role>
+  <name>Nicolas Barykin Pankevich</name>
+  <subcommittee>
+   <person role="bio-academic">
+    <display-role>Biology academic representative</display-role>
+    <name>Erica Zhao</name>
+    </person>
+   <person role="biochem-academic">
+    <display-role>Biochemistry academic representative</display-role>
+    <name>Tianyu Wen</name>
+    </person>
+   <person role="chem-academic">
+    <display-role>Chemistry academic representative</display-role>
+    <name>Krzysztof Oliwa</name>
+    </person>
+   <person role="maths-academic">
+    <display-role>Mathematics academic representative</display-role>
+    <name>Priscilla Yip</name>
+    </person>
+   <person role="physic-academic">
+    <display-role>Physics academic representative</display-role>
+    <name>Stefano Fiocca</name>
+    </person>
+  </subcommittee>
+ </person>
+ <person role="vice-president-operations">
+  <display-role>Vice President (Operations)</display-role>
+  <name>Trinity Stenhouse</name>
+  <subcommittee>
+   <person role="alumni-officer-theta-bearer">
+    <display-role>Alumni Officer (Theta Bearer)</display-role>
+    <name>Mrunal Tamhankar</name>
+    </person>
+   <person role="broadsheet-editor">
+    <display-role>Broadsheet Editor</display-role>
+    <name>Lucy Wayne</name>
+    </person>
+   <person role="deputy-broadsheet-editor">
+    <display-role>Deputy Broadsheet Editor</display-role>
+    <name>Avi Aggarwal</name>
+    </person>
+   <person role="science-challenge-chair">
+    <display-role>Science Challenge Chair</display-role>
+    <name>Lingyi Wang</name>
+    </person>
+   <person role="sponsorship-officer">
+    <display-role>Sponsorship Officer</display-role>
+    <name>Deniz San</name>
+    </person>
+   <person role="webmaster">
+    <display-role>Webmaster</display-role>
+    <name>Jingrou Zeng</name>
+    </person>
+  </subcommittee>
+ </person>
+ <person role="vice-president-welfare">
+  <display-role>Vice President (Welfare &amp; Wellbeing)</display-role>
+  <name>Tianyu Wen</name>
+  <subcommittee>
+   <person role="wellbeing-activities-officer">
+    <display-role>Wellbeing Activities Officer</display-role>
+    <name>Marusha Filippova</name>
+    </person>
+   <person role="bio-wellbeing">
+    <display-role>Biology wellbeing representative</display-role>
+    <name>Kauthar Benriassa</name>
+    </person>
+   <person role="biochem-wellbeing">
+    <display-role>Biochemistry wellbeing representative</display-role>
+    <name>Pansy Pan</name>
+    </person>
+   <person role="chem-wellbeing">
+    <display-role>Chemistry wellbeing representative</display-role>
+    <name>Chinny Lee</name>
+    </person>
+   <person role="maths-wellbeing">
+    <display-role>Mathematics wellbeing representative</display-role>
+    <name>Desmond Lin</name>
+    </person>
+   <person role="physic-wellbeing">
+    <display-role>Physics wellbeing representative</display-role>
+    <name>Anthea MacIntosh-LaRocque</name>
+    </person>
+  </subcommittee>
+ </person>
+</committee>
